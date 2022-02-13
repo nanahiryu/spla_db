@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'Splatfont';
+    src: url('./font/Splatfont.woff') format('woff');
+}
+body {
+    font-family: Splatfont;
+    background-image: url("../img/bg_main.png");
+    background-color: rgba(255,255,255,0.5);
+    background-blend-mode: lighten;
+    padding-top: 56px;
+}
+a {
+    text-decoration: none;
+}
+.navbar_bgcolor {
+    background-color: #ff21b2;
+}
+
+.side_margin {
+    margin: 10px 50px;
+}
+pre {
+    white-space: pre-line;
+}
+
+
+/* index */
+.index_title_box {
+    margin: 0 0 50px 0;
+}
+.index_link {
+    font-size: 24pt;
+}
+.index_splat {
+    margin: 100px 0 0 0;
+}
+.majime_font {
+    font-family: serif;
+}
+.gear_badge {
+    width: 30px;
+    vertical-align: middle;
+}
+.inline_title {
+    display: inline;
+    vertical-align: middle;
+}
+.index_kousatu_box {
+    margin: 30px 0;
+}
+.kousatu_textbox {
+    padding: 10px;
+    margin: 10px;
+    border:3px solid #333333;
+    border-radius: 10px;
+}
+
+
+/* main */
+.main_title {
+    font-size: 36pt;
+}
+.main_zokusei {
+    width: 100px;
+    font-size: 16pt;
+}
+.main_value {
+    width:150px;
+    font-size: 16pt;
+}
+.main_subsec {
+    font-size: 36pt;
+    margin: 30px 0 0 0;
+}
+.main_img {
+    width: 80px;
+    margin: 10px;
+}
+.main_link_name {
+    font-size: 24pt;
+}
+/* weapon */
+.weapon_name {
+    font-size: 36pt;
+}
+.weapon_zokusei {
+    width: 200px;
+    font-size: 24pt;
+}
+.weapon_sp_img {
+    width: 50px;
+}
+.weapon_sub_img {
+    width: 50px;
+}
+.weapon_main_link_name {
+    width: 500px;
+    font-size: 24pt;
+}
+.weapon_subsp_link_name {
+    width: 450px;
+    font-size: 24pt;
+}
+/* weapon_list */
+.weapon_list_title {
+    font-size: 36pt;
+}
+.weapon_list_img {
+    width: 80px;
+    margin: 10px;
+}
+.weapon_list_weapon_name {
+    font-size: 24pt;
+    width: 500px;
+}
+/* sub */
+.sub_title {
+    font-size: 36pt;
+}
+.sub_explanation {
+    font-size: 16pt;
+}
+.sub_subsec {
+    font-size: 36pt;
+    margin: 30px 0 0 0;
+}
+.sub_img {
+    width: 80px;
+    margin: 10px;
+}
+.sub_link_name {
+    font-size: 24pt;
+    width: 500px;
+}
+/* special */
+.sp_title {
+    font-size: 36pt;
+}
+.sp_explanation {
+    font-size: 16pt;
+}
+.sp_subsec {
+    font-size: 36pt;
+    margin: 30px 0 0 0;
+}
+.sp_img {
+    width: 80px;
+    margin: 10px;
+}
+.sp_link_name {
+    font-size: 24pt;
+    width: 500px;
+}
+/* player_list */
+.player_list_title {
+    font-size: 36pt;
+}
+.player_list_player_name {
+    font-size: 24pt;
+    width: 600px;
+    margin: 30px 0 10px 0;
+    border-top: #111111 solid 2px;
+    border-bottom: #111111 solid 2px;
+}
+
+.player_list_zokusei {
+    font-size: 16pt;
+    margin: 10px 10px 10px 0;
+}
+.player_list_weapon_name {
+    width: 500px;
+    font-size: 24pt;
+}
+.player_list_img {
+    width: 80px;
+    margin: 10px;
+}
+/* player */
+.player_title {
+    font-size: 36pt;
+}
+.player_explanation {
+    font-size: 16pt;
+}
+.player_weapon_img {
+    width: 80px;
+    margin: 10px;
+}
+.player_weapon_link_name {
+    font-size: 24pt;
+}
+.player_zokusei {
+    font-size: 36pt;
+}

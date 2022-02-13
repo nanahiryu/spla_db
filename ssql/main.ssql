@@ -1,0 +1,16 @@
+foreach m.id
+generate html[
+    {m.name, '系統'}@{class='main_title'}!
+    {
+    {'ブキ種'@{class='main_zokusei'}, {c.name}@{class='main_value'}}!
+    {'立ち位置'@{class='main_zokusei'}, {p.name}@{class='main_value'}}!
+    {'射程'@{class='main_zokusei'}, {m.range}@{class='main_value'}}!
+    {'重量'@{class='main_zokusei'}, {wei.name}@{class='main_value'}}!
+    {'イカ速'@{class='main_zokusei'}, {wei.ikasoku}@{class='main_value'}}!
+    {'人速'@{class='main_zokusei'}, {wei.hitosoku}@{class='main_value'}}
+    }@{table}!
+    {'メインが', m.name, 'のブキ'}@{class='main_subsec'}!
+    [null((asc)w.id),{image(w.img_name, './img/fig_weapon_mini')@{class='main_img'}, link({w.name}@{class='main_link_name'}, 'weapon.ssql', w.id)}]!
+]!
+from spla_main m, spla_weapon w, spla_weight wei, spla_class c, spla_position p
+where m.weight = wei.id and w.main = m.id and m.class=c.id and m.position = p.id

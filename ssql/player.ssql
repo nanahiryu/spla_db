@@ -1,0 +1,9 @@
+foreach p.id
+generate html[
+    {{p.name}@{class='player_title'}}!
+    {{p.explanation}@{class='player_explanation'}}!
+    '主な使用ブキ'@{class='player_zokusei'}!
+    [image(w.img_name, './img/fig_weapon_mini')@{class='player_weapon_img'}, link({w.name}@{class='player_weapon_link_name'}, 'weapon.ssql', w.id)]!
+]!
+from spla_player p, spla_use u, spla_weapon w
+where p.id = u.player_id and w.id = u.weapon_id

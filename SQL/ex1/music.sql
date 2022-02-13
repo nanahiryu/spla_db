@@ -1,0 +1,11 @@
+drop table ex1_music;
+create table ex1_music(id int, title varchar, composer int, lyric int, sing int);
+insert into ex1_music values (1, 'ミライプリズム', 1, 1, 2);
+insert into ex1_music values (2, 'ツーマンライブ', 3, 3, 4);
+insert into ex1_music values (3, 'キモチコネクト', 5, 5, 6);
+insert into ex1_music values (4, 'Drawing', 7, 7, 8);
+insert into ex1_music values (5, 'CLICK', 9, 9, 8);
+insert into ex1_music values (6, 'STEP', 9, 9, 8);
+insert into ex1_music values (7, '10時の方角', 10, 10, 11);
+insert into ex1_music values (8, 'ファンファーレ', 10, 10, 11);
+insert into ex1_music values (9, 'フィクション', 10, 10, 11);

@@ -1,0 +1,11 @@
+drop table ex1_track;
+create table ex1_track(cd char(16), num int, music int);
+insert into ex1_track values ('GFCA410', 1, 1);
+insert into ex1_track values ('GFCA410', 4, 2);
+insert into ex1_track values ('GFCA410', 5, 3);
+insert into ex1_track values ('SECL1511', 1, 4);
+insert into ex1_track values ('SECL1511', 2, 5);
+insert into ex1_track values ('SECL1511', 7, 6);
+insert into ex1_track values ('SRCL11066', 1, 7);
+insert into ex1_track values ('SRCL11066', 2, 8);
+insert into ex1_track values ('SRCL11066', 3, 9);

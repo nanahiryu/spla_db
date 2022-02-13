@@ -1,0 +1,12 @@
+-- プレイヤー名：100px, 説明：1200px, 持ちブキ：300px
+generate html{
+    {'プレイヤー名'}@{width='100',color='black'},
+    {'説明'! '持ちブキ'}@{width='1200',color='black'}!
+    [(asc)p.name@{width='100',bgcolor='#bdf0e5',color='black'},
+        [p.explanation@{width='1200',bgcolor='#cef0bd',color='black'}!
+            [w.name@{width='300',bgcolor='#e6f0bd',color='black'}],
+        ]!
+    ]!
+}@{debug='on',bgcolor='#dae1ed'}
+from spla_player p, spla_use u, spla_weapon w
+where p.id=u.player_id and u.weapon_id=w.id

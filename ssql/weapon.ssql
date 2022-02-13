@@ -1,0 +1,10 @@
+foreach w.id
+generate html[
+    image(w.img_name, './img/fig_weapon_mini'),
+    {w.name@{class='weapon_name'}! {'spポイント', w.special_point}}!
+    [{'メイン'@{class='weapon_zokusei'},link({m.name}@{class='weapon_main_link_name'}, 'main.ssql', m.id)}!
+    {'サブ'@{class='weapon_zokusei'},link({su.name}@{class='weapon_subsp_link_name'}, 'sub.ssql', su.id),image(su.img_name,'./img/fig_sub_mini')@{class='weapon_sub_img'}}!
+    {'スペシャル'@{class='weapon_zokusei'},link({sp.name}@{class='weapon_subsp_link_name'}, 'special.ssql', sp.id),image(sp.img_name,'./img/fig_sp_mini')@{class='weapon_sp_img'}}]!@{table}
+]!
+from spla_weapon w, spla_sub su, spla_special sp, spla_main m
+where w.main=m.id and w.sub=su.id and w.special=sp.id

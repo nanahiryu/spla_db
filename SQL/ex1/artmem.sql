@@ -1,0 +1,18 @@
+drop table ex1_artmem;
+create table ex1_artmem(artist int, num int,  member int);
+insert into ex1_artmem values (1, 1, 1);
+insert into ex1_artmem values (2, 1, 2);
+insert into ex1_artmem values (2, 2, 3);
+insert into ex1_artmem values (3, 1, 4);
+insert into ex1_artmem values (4, 1, 2);
+insert into ex1_artmem values (5, 1, 5);
+insert into ex1_artmem values (6, 1, 3);
+insert into ex1_artmem values (7, 1, 6);
+insert into ex1_artmem values (8, 1, 7);
+insert into ex1_artmem values (8, 1, 8);
+insert into ex1_artmem values (9, 1, 9);
+insert into ex1_artmem values (10, 1, 10);
+insert into ex1_artmem values (11, 1, 10);
+insert into ex1_artmem values (11, 2, 11);
+insert into ex1_artmem values (11, 3, 12);
+insert into ex1_artmem values (11, 4, 13);

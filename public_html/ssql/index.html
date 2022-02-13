@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<meta charset="UTF-8">
+	<title>Splatoon2! DB!!</title>
+	<!-- bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<!-- bootstrapここまで -->
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+	<!-- jqueryここまで -->
+	<link rel="stylesheet" href="jscss/style.css">
+</head>
+
+<body>
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar_bgcolor">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="./index.html">Home</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="./weapon_list.html">ブキのリスト</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./player_list.html">プレイヤーのリスト</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- navbarここまで -->
+	<div class="side_margin">
+		<div class="index_title_box">
+			<h1>DB概論最終課題</h1>
+			<h2>～スプラトゥーンのブキとプレイヤーのDB～</h2>
+		</div>
+		<div class="index_link_box">
+			<h2>リンク</h2>
+			<a href="weapon_list.html" class="index_link">ブキのリスト</a><br>
+			<a href="player_list.html" class="index_link">プレイヤーのリスト</a><br>
+		</div>
+		<h2 class="index_splat">イカ(以下)このページの説明、考察、感想、SSQL関連</h2>
+		<h3>※可読性が低いフォントなので以下の考察、感想等はボタンでフォントを変更できるようにしておきました。</h3>
+
+		<button class="btn btn-primary" type="button" id="ikabtn">
+			イカフォント
+		</button>
+		<button class="btn btn-primary majime_font" type="button" id="serifbtn">
+			メイリオ
+		</button>
+		<script>
+			$("#ikabtn").click(function () {
+				$(".index_kousatu_box").css("font-family", "Splatfont");
+				$(".index_kousatu_box").hide().fadeIn(1000);
+			});
+			$("#serifbtn").click(function () {
+				$(".index_kousatu_box").css("font-family", "serif");
+				$(".index_kousatu_box").hide().fadeIn(1000);
+			})
+		</script>
+
+		<div class=index_kousatu_box>
+			<img src="./img/gear_mini/mainseinou.png" class="gear_badge">
+			<h2 class="inline_title">ページの説明</h2>
+			<div class="kousatu_textbox">
+				本ページはブキのリスト、ブキ説明、メイン説明、サブ説明、スペシャル説明、プレイヤーのリスト、プレイヤーの説明から構成される。また、入口は2つ用意した。1つ目はブキのリストである。このページからはブキ説明に遷移することができる。2つ目はプレイヤー説明である。このページからはブキ説明に遷移することができる。さらに、ナビゲーションバーを設置し、どのページからでもブキのリスト、プレイヤーのリスト、ホームに遷移できるように設計した。また、フォントはフリーのttfファイルをダウンロード、woffファイルに変換後サーバー上に配置した。
+			</div>
+		</div>
+		<div class="index_kousatu_box">
+			<img src="./img/gear_mini/hitosoku.png" class="gear_badge">
+			<h2 class="inline_title">考察</h2>
+			<div class="kousatu_textbox">
+				第1,2,3回課題のおかげもあり、第4回課題はかなり楽にページを作成することができた。ただ、初めに作成したものはリストにほとんどすべての情報が集約してしまっていて、ブキ、メイン、サブ、スペシャルの各ページが意味をなさないものとなっていた。そこで、リストのページにはあくまでブキの名前のみを載せるようにし、情報量を絞ることでページの可読性を高め、ブキ、メイン、サブ、スペシャルのページに意味を持たせることができた。
+			</div>
+		</div>
+		<div class="index_kousatu_box">
+			<img src="./img/gear_mini/ikasoku.png" class="gear_badge">
+			<h2 class="inline_title">課題</h2>
+			<div class="kousatu_textbox">
+				今回のページで実践できなかった課題としては、プレイヤー関連のページへの遷移ができないことが挙げられる。本ページではプレイヤー、プレイヤーリストからブキへの遷移は可能としているが、その逆方向の遷移はできないようになっている。原因としては全てのブキが1人以上のプレイヤーに使われているわけではないため、「～を使っているプレイヤー」のようなテーブルを作ると空になってしまうことがあり、今回はこの遷移はできないようにしてある。
+			</div>
+		</div>
+		<div class="index_kousatu_box">
+			<img src="./img/gear_mini/penaup.png" class="gear_badge">
+			<h2 class="inline_title">授業の感想</h2>
+			<div class="kousatu_textbox">
+				普段何気なくデータを置いているだけのデータベースを設計するという観点が自分にとっては新鮮で非常に面白かった。また、アプリケーションの開発はデータベースの設計から行うと講義の中で仰っていた点に関して、実際に自分で作ろうと思っていたものに当てはめて実践したところ、非常に見通しがよくなったので、今後もこの考え方は忘れないようにしたい。
+			</div>
+		</div>
+		<div class="index_kousatu_box">
+			<img src="./img/gear_mini/rasupa.png" class="gear_badge">
+			<h2 class="inline_title">SSQLについて</h2>
+			<div class="kousatu_textbox">
+				第4課題では主にSSQLを使っていったので、それについて上手くいかなかったところ、疑問などについて残していく(卒業研究の関係で後半3回の授業は参加できなかったので、そのタイミングで説明していたとしたらすみません)。<br>
+				1つ目はstyleの設定についてである。ssql上にclass名を設定する必要があるため、一度ssqlファイルを実行してhtmlファイルを生成し、そのhtmlファイルを書き換えたときにclassを付け加えたくなった場合は再度ssqlファイルを編集してから実行しなおさなければいけないのが不便に感じた。また、ssqlファイルを実行する毎にlinkタグなどもその都度書き足さなければいけないのも少し面倒に感じた。<br>
+				2つ目は@{table}の使い方である。例えば、表の外枠だけを覆うように線を入れたい場合や横方向の線のみ入れたいという場合にどのように設定したらよいのかがわからなかったのでそのあたりについて知りたい。<br>
+				3つ目はif文のような操作があれば...という点である。今回の課題において、プレイヤーのうち誰も使っていないブキが存在するという場面に遭遇した。当初の考えでは、ブキ説明のページに「～を使っているプレイヤー」のようにプレイヤーページと紐づけを行いたかったが、このリストが空になった場合に「なし」などのように出力する方法が分からず、実装できなかった。もし、このような例外処理の方法があれば知りたいと思った。
+			</div>
+		</div>
+		<div class="index_kousatu_box">
+			<img src="./img/gear_mini/taibutu.png" class="gear_badge">
+			<h2 class="inline_title">SSQLコード</h2>
+			<div class="kousatu_textbox">
+				<div class="index_coding">
+					<h3 class="inline_title">weapon_list.ssql</h3>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ssql1" aria-expanded="false"
+						aria-controls="collapseExample">
+						説明
+					</button>
+					<div class="collapse" id="ssql1">
+						<div class="card card-body">
+							ブキのリストを一覧できるようにシンプルにしました。
+						</div>
+					</div>
+					<pre><code>
+						generate html[
+						{'ブキリスト'@{class='weapon_list_title'}}!
+						[null((asc)w.id),
+						image(w.img_name, './img/fig_weapon_mini')@{class='weapon_list_img'},
+						link({w.name}@{class='weapon_list_weapon_name'}, 'weapon.ssql', w.id)]!
+						]!
+						from spla_weapon w
+					</code></pre>
+				</div>
+				<div class="index_coding">
+					<h3 class="inline_title">weapon.ssql</h3>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ssql2" aria-expanded="false"
+						aria-controls="collapseExample">
+						説明
+					</button>
+					<div class="collapse" id="ssql2">
+						<div class="card card-body">
+							見出しとしてブキの名前、表にメイン、サブ、スペシャルと画像を沿えました。
+						</div>
+					</div>
+					<pre><code>
+						foreach w.id
+						generate html[
+						image(w.img_name, './img/fig_weapon_mini'),
+						{w.name@{class='weapon_name'}! {'spポイント', w.special_point}}!
+						[{'メイン'@{class='weapon_zokusei'},link({m.name}@{class='weapon_main_link_name'}, 'main.ssql', m.id)}!
+						{'サブ'@{class='weapon_zokusei'},link({su.name}@{class='weapon_subsp_link_name'}, 'sub.ssql',
+						su.id),image(su.img_name,'./img/fig_sub_mini')@{class='weapon_sub_img'}}!
+						{'スペシャル'@{class='weapon_zokusei'},link({sp.name}@{class='weapon_subsp_link_name'}, 'special.ssql',
+						sp.id),image(sp.img_name,'./img/fig_sp_mini')@{class='weapon_sp_img'}}]!@{table}
+						]!
+						from spla_weapon w, spla_sub su, spla_special sp, spla_main m
+						where w.main=m.id and w.sub=su.id and w.special=sp.id
+					</code></pre>
+				</div>
+				<div class="index_coding">
+					<h3 class="inline_title">main.ssql</h3>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ssql3" aria-expanded="false"
+						aria-controls="collapseExample">
+						説明
+					</button>
+					<div class="collapse" id="ssql3">
+						<div class="card card-body">
+							メインの基本性能をテーブルにまとめ、その下にそのメインを持つブキのリストを添えました。
+						</div>
+					</div>
+					<pre><code>
+						foreach m.id
+						generate html[
+						{m.name, '系統'}@{class='main_title'}!
+						{
+						{'ブキ種'@{class='main_zokusei'}, {c.name}@{class='main_value'}}!
+						{'立ち位置'@{class='main_zokusei'}, {p.name}@{class='main_value'}}!
+						{'射程'@{class='main_zokusei'}, {m.range}@{class='main_value'}}!
+						{'重量'@{class='main_zokusei'}, {wei.name}@{class='main_value'}}!
+						{'イカ速'@{class='main_zokusei'}, {wei.ikasoku}@{class='main_value'}}!
+						{'人速'@{class='main_zokusei'}, {wei.hitosoku}@{class='main_value'}}
+						}@{table}!
+						{'メインが', m.name, 'のブキ'}@{class='main_subsec'}!
+						[null((asc)w.id),{image(w.img_name, './img/fig_weapon_mini')@{class='main_img'}, link({w.name}@{class='main_link_name'}, 'weapon.ssql',
+						w.id)}]!
+						]!
+						from spla_main m, spla_weapon w, spla_weight wei, spla_class c, spla_position p
+						where m.weight = wei.id and w.main = m.id and m.class=c.id and m.position = p.id
+					</code></pre>
+				</div>
+				<div class="index_coding">
+					<h3 class="inline_title">sub.ssql</h3>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ssql4" aria-expanded="false"
+						aria-controls="collapseExample">
+						説明
+					</button>
+					<div class="collapse" id="ssql4">
+						<div class="card card-body">
+							サブの名称を見出しにし、その下にサブの説明、そのサブを持つブキのリストを並べました。
+						</div>
+					</div>
+					<pre><code>
+						foreach su.id
+						generate html[
+						{su.name}@{class='sub_title'}!
+						{su.explanation}@{class='sub_explanation'}!
+						{'サブが', su.name, 'のブキ'}@{class='sub_subsec'}!
+						[image(w.img_name, './img/fig_weapon_mini')@{class='sub_img'}, link({w.name}@{class='sub_link_name'}, 'weapon.ssql', w.id)]!
+						]!
+						from spla_weapon w, spla_sub su
+						where w.sub = su.id
+					</code></pre>
+				</div>
+				<div class="index_coding">
+					<h3 class="inline_title">special.ssql</h3>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ssql5" aria-expanded="false"
+						aria-controls="collapseExample">
+						説明
+					</button>
+					<div class="collapse" id="ssql5">
+						<div class="card card-body">
+							スペシャルの名称を見出しにし、その下にスペシャルの説明、そのスペシャルを持つブキのリストを並べました。
+						</div>
+					</div>
+					<pre><code>
+						foreach sp.id
+						generate html[
+						{sp.name}@{class='sp_title'}!
+						{sp.explanation}@{class='sp_explanation'}!
+						{'スペシャルが', sp.name, 'のブキ'}@{class='sp_subsec'}!
+						[image(w.img_name, './img/fig_weapon_mini')@{class='sp_img'}, link({w.name}@{class='sp_link_name'}, 'weapon.ssql', w.id)]!
+						]!
+						from spla_weapon w, spla_special sp
+						where w.special = sp.id
+					</code></pre>
+				</div>
+				<div class="index_coding">
+					<h3 class="inline_title">player_list.ssql</h3>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ssql6" aria-expanded="false"
+						aria-controls="collapseExample">
+						説明
+					</button>
+					<div class="collapse" id="ssql6">
+						<div class="card card-body">
+							プレイヤー名とそのプレイヤーが主に使う武器をリスト化しました。
+						</div>
+					</div>
+					<pre><code>
+						generate html[
+						{'スプラプレーヤーリスト'}@{class='player_list_title'}!
+						[
+						null((asc)p.id),
+						link({p.name}@{class='player_list_player_name'}, 'player.ssql', p.id)!
+						[
+						'主な使用ブキ'@{class='player_list_zokusei'},
+						[image(w.img_name, './img/fig_weapon_mini')@{class='player_list_img'},link({w.name}@{class='player_list_weapon_name'}, 'weapon.ssql',
+						w.id)]!
+						]!
+						]!
+						]!
+						from spla_player p, spla_use u, spla_weapon w
+						where p.id = u.player_id and w.id = u.weapon_id
+					</code></pre>
+				</div>
+				<div class="index_coding">
+					<h3 class="inline_title">player.ssql</h3>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#ssql7" aria-expanded="false"
+						aria-controls="collapseExample">
+						説明
+					</button>
+					<div class="collapse" id="ssql7">
+						<div class="card card-body">
+							プレイヤー名を見出しにし、その下に説明、主な使用武器のリストを配置しました。
+						</div>
+					</div>
+					<pre><code>
+						foreach p.id
+						generate html[
+						{{p.name}@{class='player_title'}}!
+						{{p.explanation}@{class='player_explanation'}}!
+						'主な使用ブキ'@{class='player_zokusei'}!
+						[image(w.img_name, './img/fig_weapon_mini')@{class='player_weapon_img'}, link({w.name}@{class='player_weapon_link_name'}, 'weapon.ssql',
+						w.id)]!
+						]!
+						from spla_player p, spla_use u, spla_weapon w
+						where p.id = u.player_id and w.id = u.weapon_id
+					</code></pre>
+				</div>
+			</div>
+		</div>
+		<div class="index_kousatu_box">
+			<img src="./img/gear_mini/stejan.png" class="gear_badge">
+			<h2 class="inline_title">CSSコード</h2>
+			<div class="kousatu_textbox">
+				<div class="index_coding">
+					<h3 class="inline_title">style.css</h3>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#css1" aria-expanded="false"
+						aria-controls="collapseExample">
+						説明
+					</button>
+					<div class="collapse" id="css1">
+						<div class="card card-body">
+							<ul>
+								<li>全てのページにおいて左右にmerginを持たせ、見やすいページ作成を心掛けました。</li>
+								<li>bootstrapを用いて新しめのデザインを意識しました。</li>
+								<li>フォントはfontdata.comからフリーのものをダウンロードして、woffに変換してからサーバーに配置、.htaccessでアクセスできるようにしました。</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<pre><code>
+					@font-face {
+					font-family: 'Splatfont';
+					src: url('./font/Splatfont.woff') format('woff');
+					}
+					body {
+					font-family: Splatfont;
+					background-image: url("../img/bg_main.png");
+					background-color: rgba(255,255,255,0.5);
+					background-blend-mode: lighten;
+					padding-top: 56px;
+					}
+					a {
+					text-decoration: none;
+					}
+					.navbar_bgcolor {
+					background-color: #ff21b2;
+					}
+					
+					.side_margin {
+					margin: 10px 50px;
+					}
+					pre {
+					white-space: pre-line;
+					}
+					
+					
+					/* index */
+					.index_title_box {
+					margin: 0 0 50px 0;
+					}
+					.index_link {
+					font-size: 24pt;
+					}
+					.index_splat {
+					margin: 100px 0 0 0;
+					}
+					.majime_font {
+					font-family: serif;
+					}
+					.gear_badge {
+					width: 30px;
+					vertical-align: middle;
+					}
+					.inline_title {
+					display: inline;
+					vertical-align: middle;
+					}
+					.index_kousatu_box {
+					margin: 30px 0;
+					}
+					.kousatu_textbox {
+					padding: 10px;
+					margin: 10px;
+					border:3px solid #333333;
+					border-radius: 10px;
+					}
+					
+					
+					/* main */
+					.main_title {
+					font-size: 36pt;
+					}
+					.main_zokusei {
+					width: 100px;
+					font-size: 16pt;
+					}
+					.main_value {
+					width:150px;
+					font-size: 16pt;
+					}
+					.main_subsec {
+					font-size: 36pt;
+					margin: 30px 0 0 0;
+					}
+					.main_img {
+					width: 80px;
+					margin: 10px;
+					}
+					.main_link_name {
+					font-size: 24pt;
+					}
+					/* weapon */
+					.weapon_name {
+					font-size: 36pt;
+					}
+					.weapon_zokusei {
+					width: 200px;
+					font-size: 24pt;
+					}
+					.weapon_sp_img {
+					width: 50px;
+					}
+					.weapon_sub_img {
+					width: 50px;
+					}
+					.weapon_main_link_name {
+					width: 500px;
+					font-size: 24pt;
+					}
+					.weapon_subsp_link_name {
+					width: 450px;
+					font-size: 24pt;
+					}
+					/* weapon_list */
+					.weapon_list_title {
+					font-size: 36pt;
+					}
+					.weapon_list_img {
+					width: 80px;
+					margin: 10px;
+					}
+					.weapon_list_weapon_name {
+					font-size: 24pt;
+					width: 500px;
+					}
+					/* sub */
+					.sub_title {
+					font-size: 36pt;
+					}
+					.sub_explanation {
+					font-size: 16pt;
+					}
+					.sub_subsec {
+					font-size: 36pt;
+					margin: 30px 0 0 0;
+					}
+					.sub_img {
+					width: 80px;
+					margin: 10px;
+					}
+					.sub_link_name {
+					font-size: 24pt;
+					width: 500px;
+					}
+					/* special */
+					.sp_title {
+					font-size: 36pt;
+					}
+					.sp_explanation {
+					font-size: 16pt;
+					}
+					.sp_subsec {
+					font-size: 36pt;
+					margin: 30px 0 0 0;
+					}
+					.sp_img {
+					width: 80px;
+					margin: 10px;
+					}
+					.sp_link_name {
+					font-size: 24pt;
+					width: 500px;
+					}
+					/* player_list */
+					.player_list_title {
+					font-size: 36pt;
+					}
+					.player_list_player_name {
+					font-size: 24pt;
+					width: 600px;
+					margin: 30px 0 10px 0;
+					border-top: #111111 solid 2px;
+					border-bottom: #111111 solid 2px;
+					}
+					
+					.player_list_zokusei {
+					font-size: 16pt;
+					margin: 10px 10px 10px 0;
+					}
+					.player_list_weapon_name {
+					width: 500px;
+					font-size: 24pt;
+					}
+					.player_list_img {
+					width: 80px;
+					margin: 10px;
+					}
+					/* player */
+					.player_title {
+					font-size: 36pt;
+					}
+					.player_explanation {
+					font-size: 16pt;
+					}
+					.player_weapon_img {
+					width: 80px;
+					margin: 10px;
+					}
+					.player_weapon_link_name {
+					font-size: 24pt;
+					}
+					.player_zokusei {
+					font-size: 36pt;
+					}
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

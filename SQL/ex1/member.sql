@@ -1,0 +1,15 @@
+drop table ex1_member;
+create table ex1_member(id int, name varchar);
+insert into ex1_member values (1, 'tilt-six');
+insert into ex1_member values (2, '東雲夏陽 meets 日向美ビタースイーツ');
+insert into ex1_member values (3, '東雲心菜 meets 日向美ビタースイーツ');
+insert into ex1_member values (4, 'DECO*27');
+insert into ex1_member values (5, 'Junky(GJBox)');
+insert into ex1_member values (6, '角野寿和');
+insert into ex1_member values (7, 'クララ');
+insert into ex1_member values (8, 'アリス');
+insert into ex1_member values (9, 'kz(livetune)');
+insert into ex1_member values (10, '片岡健太');
+insert into ex1_member values (11, '荒井智之');
+insert into ex1_member values (12, '黒田隼之介');
+insert into ex1_member values (13, '小川貴之');

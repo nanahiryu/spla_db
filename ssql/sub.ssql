@@ -1,0 +1,9 @@
+foreach su.id
+generate html[
+    {su.name}@{class='sub_title'}!
+    {su.explanation}@{class='sub_explanation'}!
+    {'サブが', su.name, 'のブキ'}@{class='sub_subsec'}!
+    [image(w.img_name, './img/fig_weapon_mini')@{class='sub_img'}, link({w.name}@{class='sub_link_name'}, 'weapon.ssql', w.id)]!
+]!
+from spla_weapon w, spla_sub su
+where w.sub = su.id

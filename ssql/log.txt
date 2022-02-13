@@ -1,0 +1,31 @@
+[クエリを実行]
+■実行ファイル: /home/md404/ub353407/ssql/p1.ssql
+
+＜詳細＞
+//Entering SuperSQL System//
+[Parser:Parser] filename = /home/md404/ub353407/ssql/p1.ssql
+generate html{
+	[s.city,
+	d.floor,
+	d.name,
+	m.name,
+	i.name]!
+	}@{debug='on'}
+from dept d, employee m, item i, store s
+where d.manager=m.id  and d.id=i.dept and s.id=d.store
+Schema is [[0, 1, 2, 3, 4]]
+le0 is [HTMLG2, [HTMLC1, [0], [1], [2], [3], [4]]]
+sep_sch: [0, 1, 2, 3, 4]
+
+********** SQL **********
+1. SELECT s.city, d.floor, d.name, m.name, i.name FROM dept d ,employee m ,item i ,store s  WHERE d.manager = m.id AND d.id = i.dept AND s.id = d.store ;
+
+## Result ##
+[[[横浜, 2, おもちゃ, 遠藤 ひろ美, 迷路のおもちゃ], [横浜, 1, 宝飾品, 緒方 信太郎, イヤリング], [渋谷, 0, バーゲンコーナー, 清水 麻里, 洗剤], [横浜, 2, 子供服, 大西 亜矢香, 子供用デニムスーツ], [渋谷, 3, 駄菓子屋, 鈴木 紀男, 300g入りのあめ], [渋谷, 1, 書籍, 茂田 佳子, FeelBook], [横浜, 2, 子供服, 大西 亜矢香, ベルボトムジーンズ], [新宿, 2, 紳士服, 小川 貴史, シャツ], [新宿, 3, 婦人服, 長尾 美和子, スラックス], [新宿, 3, 寝具, 山田 次郎, ツインベッド用シーツ], [渋谷, 2, スポーツ用品, 上田 達雄, ジャケット], [新宿, 3, 寝具, 山田 次郎, 高級シーツ], [新宿, 1, 紳士カジュアル, 瀬戸 健太郎, ジーンズ], [新宿, 5, 書籍, 赤城 可菜子, 時計の本], [新宿, 3, 寝具, 山田 次郎, バスタオル], [横浜, 1, 宝飾品, 緒方 信太郎, 金の指輪], [渋谷, 0, バーゲンコーナー, 清水 麻里, ABCブロック], [渋谷, 3, 駄菓子屋, 鈴木 紀男, 600g入りあめ], [渋谷, 2, スポーツ用品, 上田 達雄, 野球ボール], [新宿, 1, 紳士カジュアル, 瀬戸 健太郎, ジャンパー]]]
+File encoding: UTF-8
+outputCssFileName = /home/md404/ub353407/public_html/ssql/jscss/p1.css
+
+ExecTime: 739msec
+// completed normally //
+結果: 成功
+

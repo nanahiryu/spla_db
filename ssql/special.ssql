@@ -1,0 +1,9 @@
+foreach sp.id
+generate html[
+    {sp.name}@{class='sp_title'}!
+    {sp.explanation}@{class='sp_explanation'}!
+    {'スペシャルが', sp.name, 'のブキ'}@{class='sp_subsec'}!
+    [image(w.img_name, './img/fig_weapon_mini')@{class='sp_img'}, link({w.name}@{class='sp_link_name'}, 'weapon.ssql', w.id)]!
+]!
+from spla_weapon w, spla_special sp
+where w.special = sp.id

@@ -1,0 +1,13 @@
+generate html[
+    {'スプラプレーヤーリスト'}@{class='player_list_title'}!
+    [
+        null((asc)p.id),
+        link({p.name}@{class='player_list_player_name'}, 'player.ssql', p.id)! 
+        [
+            '主な使用ブキ'@{class='player_list_zokusei'},
+            [image(w.img_name, './img/fig_weapon_mini')@{class='player_list_img'},link({w.name}@{class='player_list_weapon_name'}, 'weapon.ssql', w.id)]!
+        ]!
+    ]!
+]!
+from spla_player p, spla_use u, spla_weapon w
+where p.id = u.player_id and w.id = u.weapon_id

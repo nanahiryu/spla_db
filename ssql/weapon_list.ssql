@@ -1,0 +1,19 @@
+generate html[
+    {'ブキリスト'@{class='weapon_list_title'}}!
+    [null((asc)w.id),
+    image(w.img_name, './img/fig_weapon_mini')@{class='weapon_list_img'},
+    link({w.name}@{class='weapon_list_weapon_name'}, 'weapon.ssql', w.id)]!
+]!
+from spla_weapon w
+
+
+
+-- generate html[null((asc)w.id),
+--     image(w.img_name, './img/fig_weapon_mini'),
+--     {w.name! {'spポイント', w.special_point}}!
+--     m.name!
+--     {{image(su.img_name,'./img/fig_sub_mini'),su.name}
+--     ,{image(sp.img_name,'./img/fig_sp_mini'),sp.name}}
+-- ]!@{table}
+-- from spla_weapon w, spla_sub su, spla_special sp, spla_main m
+-- where w.main=m.id and w.sub=su.id and w.special=sp.id
